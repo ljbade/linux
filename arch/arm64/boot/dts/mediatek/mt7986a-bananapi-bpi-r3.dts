@@ -159,6 +159,13 @@
 	};
 };
 
+&afe {
+	status = "disabled";
+	pinctrl-names = "default", "i2s";
+	pinctrl-0 = <&afe_pins_default>;
+	pinctrl-1 = <&afe_pins_i2s>;
+};
+
 &cpu_thermal {
 	cooling-maps {
 		map-cpu-active-high {
@@ -265,6 +272,20 @@
 		mux {
 			function = "i2c";
 			groups = "i2c";
+		};
+	};
+
+	afe_pins_default: afe-pins {
+		mux {
+			function = "audio";
+			groups = "pcm";
+		};
+	};
+
+	afe_pins_i2s: afe-i2s-pins {
+		mux {
+			function = "audio";
+			groups = "i2s";
 		};
 	};
 
